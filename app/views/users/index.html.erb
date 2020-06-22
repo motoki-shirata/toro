@@ -1,6 +1,19 @@
-<h1>ユーザー一覧</h1>
-<% @users.each do |user| %>
-  <a href="/users/<%= user.id %>"><%= user.name %></a>
-  <hr>
-<% end %>
-<%= link_to "ホームへ戻る", posts_path %>
+
+<div class="container border">
+  <div class="row">
+    <div class="col-6 col-offset-3">
+      <h1>Users</h1>
+      <% @users.each do |user| %>
+        <h3>
+          Name: <a href="/users/<%= user.id %>"><%= user.name %></a>
+        </h3>
+        <br>
+        <h3>
+          Email: <%= user.email %>
+        </h3>
+        <hr>
+      <% end %>
+      <%= link_to "Return to home", posts_path %>
+    </div>
+  </div>
+</div>

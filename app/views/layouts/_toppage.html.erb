@@ -1,0 +1,14 @@
+<!--ログインしていないときだけ表示する用-->
+
+<div class="center jumbotron">
+  <div class="text-center">
+		<h1>Toro</h1>
+		<h2>今の気持ちを吐露して楽になろう!</h2>
+		<%=  image_tag 'toppage.jpg', :size => '1300x660'%>
+  </div>
+  <br>
+  <div class="container text-center">
+		<%= link_to "Login / Sign up", new_user_session_path, class: 'btn btn-lg btn-primary btn-block' %>
+  </div>
+
+</div>

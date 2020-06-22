@@ -1,19 +1,39 @@
 <% if user_signed_in? %>
-  <%= link_to "ログアウト", destroy_user_session_path, :method => :delete %>
-  <%= link_to "マイページへ", user_path(current_user.id) %>
-  <h2>投稿する</h2>
-  <%= form_for @post do |f| %>
-    <%= f.text_field :content %>
-    <%= f.submit %>
-  <% end %>
-  <hr>
-  <h2>投稿一覧</h2>
-  <% @posts.each do |post| %>
-    <a href="/users/<%= post.user.id %>"><%= post.user.name %></a>
-    <p><a href="/posts/<%= post.id %>"><%= post.content %></a></p>
-  <% end %>
+  <div class="container">
+    <h2>Make Toro</h2>
+    <div class="field form-group">
+      <%= form_for @post do |f| %>
+        <%= f.text_field :content, class:" row col-form col-4 mb-3"%>
+        <%= f.submit "Post", class:"row btn btn-primary btn-block col-1" %>
+      <% end %>
+    </div>
+    <hr>
 
+    <h2>Toros</h2>
+    <ul class="list-unstyled">
+    	<% @posts.each do |post| %>
+    		<li class="media mb-3">
+    			<div class="media-body">
+    				<div>
+    					<h3>
+    					  <%= link_to post.user.name, user_path(post.user) %>
+    					</h3>
+    					<p class="text-muted">posted at <%= post.created_at %></p>
+    				</div>
+    				<div>
+    					<h3 class="mb-0">
+    					  <a href="/posts/<%= post.id %>"><%= post.content %></a>
+    					</h3>
+    					<% if current_user == post.user %>
+    						<%= link_to "Delete", post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+    					<% end %>
+    				<hr>
+    				</div>
+    			</div>
+    		</li>
+    	<% end %>
+    </ul>
+  </div>
 <% else %>
-  <%= link_to "ユーザー登録", new_user_registration_path %>
-  <%= link_to "ログイン", new_user_session_path %>
+  <%= render "layouts/toppage" %>
 <% end %>

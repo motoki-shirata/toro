@@ -1,34 +1,42 @@
-<h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
+<div class="center jumbotron">
+  <div class="text-center">
+    <h2>Sign up</h2>
   </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+  <center>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+      <div class="field form-group">
+        <%= f.label :name, class:"col-3 col-form-label"%><br />
+        <%= f.text_field :name, autofocus: true, class:"form-control col-3" %>
+      </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+      <div class="field form-group">
+        <%= f.label :email, class:"col-3 col-form-label"%><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control col-3" %>
+      </div>
 
-<%= render "devise/shared/links" %>
+      <div class="field form-group">
+        <%= f.label :password, class:"col-form-label" %>
+        <% if @minimum_password_length %>
+        <em class="col-form-label">(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password", class:"form-control col-3" %>
+      </div>
+
+      <div class="field form-group">
+        <%= f.label :password_confirmation, class:"col-3 col-form-label" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control col-3" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up", class:"btn btn-primary btn-block col-3" %>
+      </div>
+    <% end %>
+  <%= link_to "Click here to log in！", new_user_session_path%>
+  </center>
+</div>
+

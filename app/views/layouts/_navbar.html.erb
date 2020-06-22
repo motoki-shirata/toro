@@ -1,0 +1,24 @@
+<header class="mb-4">
+	<nav class="navbar navbar-expand-sm navbar-dark" style="background-color:#87cefa;">
+		<a class="navbar-brand" href="/">
+			<h1>Toro</h1>
+			</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+			<% if user_signed_in? %>
+				<ul class="navbar-nav">
+					<li class="nav-item col-2"><%= link_to "Logout", destroy_user_session_path, :method => :delete, class: 'btn btn-lg btn-secondary' %></li>
+				</ul>
+				<ul class="navbar-nav">
+					<li class="nav-item col-2"><%= link_to "Users", "/users", class: 'btn btn-lg btn-secondary' %></li>
+				</ul>
+			<% else %>
+				<ul class="navbar-nav">
+					<li class="nav-item"><%= link_to "Log in / Sign up", new_user_session_path, class: 'btn btn-lg btn-primary' %></li>
+				</ul>
+			<% end %>
+		</div>
+	</nav>
+</header>
