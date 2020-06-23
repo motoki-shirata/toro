@@ -17,8 +17,10 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
 
     if @post.save
+      flash[:success] = 'Toroを投稿しました。'
       redirect_to(root_path)
     else
+      flash[:success] = 'Toroの投稿に失敗しました。'
       redirect_to(root_path)
     end
   end

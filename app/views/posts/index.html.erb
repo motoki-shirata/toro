@@ -1,6 +1,7 @@
 <% if user_signed_in? %>
   <div class="container">
     <h2>Make Toro</h2>
+    <h2><%= flash[:success] %></h2>
     <div class="field form-group">
       <%= form_for @post do |f| %>
         <%= f.text_field :content, class:" row col-form col-4 mb-3"%>

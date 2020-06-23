@@ -20,7 +20,7 @@
 		<% end %>
     <hr>
   <% end %>
-
+  <h2><%= flash[:success] %></h2>
   <div class="form-group">
     <%= form_with model: [@post, @comment] do |f| %>
       <%= f.text_field :content, class:"row col-form col-4" %>

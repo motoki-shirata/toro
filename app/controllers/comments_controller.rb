@@ -8,14 +8,17 @@ class CommentsController < ApplicationController
 		@comment.post_id = params[:post_id]
 
 		if @comment.save
+		    flash[:success] = 'コメントを投稿しました。'
 			redirect_to(@post)
 		else
+		    flash[:success] = 'コメントの投稿に失敗しました。'
 			redirect_to(@post)
 		end
 	end
 
   def destroy
     @comment.destroy
+    flash[:success] = 'コメントを削除しました。'
     redirect_to @post
   end
 
